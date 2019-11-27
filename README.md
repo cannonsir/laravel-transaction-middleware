@@ -7,7 +7,7 @@ the SQL statements executed in the whole request will be rolled back
 
 ## Requirements
 
-- laravel `>=5.5`
+- laravel `>= 5.5`
 
 ## Install
 
@@ -24,6 +24,9 @@ $ composer remove cannonsir/laravel-transaction-middleware
 
 
 ## Usage
+
+> You just need to use `transaction` middleware
+ 
 
 Using Middleware in routing
 
