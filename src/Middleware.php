@@ -13,7 +13,9 @@ class Middleware
 
         $response = $next($request);
 
-        $response->exception instanceof \Throwable ? DB::rollBack() : DB::commit();
+        if (property_exists($response, 'exception')) {
+            $response->exception instanceof \Throwable ? DB::rollBack() : DB::commit();
+        }
 
         return $response;
     }
