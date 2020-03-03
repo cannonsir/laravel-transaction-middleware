@@ -11,24 +11,6 @@ This is a middleware used to open database transactions in the request.
 If an exception is thrown during the request execution, 
 the SQL statements executed in the whole request will be rolled back
 
-## Requirements
-
-- laravel `>= 5.5`
-
-## Install
-
-```bash
-$ composer require cannonsir/laravel-transaction-middleware
-```
-
-
-## Uninstall
-
-```bash
-$ composer remove cannonsir/laravel-transaction-middleware
-```
-
-
 ## Usage
 
 > You just need to use `transaction` middleware
@@ -47,6 +29,22 @@ public function __construct()
 {
     $this->middleware('transaction');
 }
+```
+
+## Requirements
+
+- laravel `>= 5.5`
+
+## Install
+
+```bash
+$ composer require cannonsir/laravel-transaction-middleware
+```
+
+## Uninstall
+
+```bash
+$ composer remove cannonsir/laravel-transaction-middleware
 ```
 
 ## License
