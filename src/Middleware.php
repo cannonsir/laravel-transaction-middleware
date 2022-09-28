@@ -1,6 +1,6 @@
 <?php
 
-namespace Cannonsir\TransactionMiddleware;
+namespace CannonSir\TransactionMiddleware;
 
 use Closure;
 use Illuminate\Support\Facades\DB;
