@@ -1,9 +1,10 @@
 <?php
 
-namespace Cannonsir\TransactionMiddleware;
+namespace CannonSir\TransactionMiddleware;
 
 use Closure;
 use Illuminate\Support\Facades\DB;
+use Throwable;
 
 class Middleware
 {
@@ -13,10 +14,27 @@ class Middleware
 
         $response = $next($request);
 
-        if (property_exists($response, 'exception')) {
-            $response->exception instanceof \Throwable ? DB::rollBack() : DB::commit();
+        if ($this->isErrorResponse($response)) {
+            DB::rollBack();
+        } else {
+            DB::commit();
         }
 
         return $response;
+    }
+
+    /**
+     * @param $response
+     * @return bool
+     */
+    private function isErrorResponse($response): bool
+    {
+        $isErrorResponse = false;
+
+        if (property_exists($response, 'exception') && $response->exception instanceof Throwable) {
+            $isErrorResponse = true;
+        }
+
+        return $isErrorResponse;
     }
 }

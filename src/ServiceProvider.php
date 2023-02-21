@@ -12,7 +12,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         $router = $this->app['router'];
 
         if (method_exists($router, 'aliasMiddleware')) {
-            return $router->aliasMiddleware('transaction', Middleware::class);
+            $router->aliasMiddleware('transaction', Middleware::class);
         }
     }
 }
